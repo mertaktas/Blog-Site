@@ -8,10 +8,12 @@ var bodyParser = require("body-parser"),
 
 
 // APP CONFİG
-mongoose.connect("mongodb://localhost:27017/blog_app", {
+mongoose.connect("mongodb+srv://mertaktas:blogsite@blog-site-uhl9e.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
@@ -123,6 +125,7 @@ app.delete("/blogs/:id", function (req, res) {
     });
 });
 
-app.listen(3000, function () {
-    console.log("SERVER İS READY!!");
-})
+var port = process.env.PORT || 8080;
+app.listen(port, function () {
+    console.log("Server Has Started!");
+});
